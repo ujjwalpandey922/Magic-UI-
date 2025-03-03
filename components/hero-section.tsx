@@ -2,10 +2,14 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowRightIcon } from "lucide-react";
 import { useEffect } from "react";
 import { EmailClient } from "@/components/email-client";
+import { Particles } from "./magicui/particles";
+import { AnimatedShinyText } from "./magicui/animated-shiny-text";
+// import { ArrowRightIcon } from "@radix-ui/react-icons";
 
+// import { AnimatedShinyText } from "@/registry/magicui/animated-shiny-text";
 export function HeroSection() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -30,63 +34,34 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-32">
       {/* Background gradients */}
-      {/* <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-yellow-500/20 to-yellow-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-gradient-to-br from-yellow-500/20 to-yellow-500/20 rounded-full blur-3xl"></div>
-      </div> */}
 
       {/* Animated stars/particles */}
-      <motion.div
-        className="absolute inset-0 overflow-hidden"
-        style={{
-          x: useTransform(smoothX, [-1, 1], [-20, 20]),
-          y: useTransform(smoothY, [-1, 1], [-20, 20]),
-        }}
-      >
-        {Array.from({ length: 50 }).map((_, i) => {
-          const randomX = Math.random() * 100 - 50;
-          const randomY = Math.random() * 100 - 50;
-
-          return (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: `translate(${randomX}%, ${randomY}%)`,
-              }}
-              initial={{ opacity: Math.random() * 0.5 + 0.3 }}
-              animate={{
-                opacity: [
-                  Math.random() * 0.5 + 0.3,
-                  Math.random() * 0.8 + 0.5,
-                  Math.random() * 0.5 + 0.3,
-                ],
-              }}
-              transition={{
-                opacity: {
-                  duration: Math.random() * 3 + 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-              }}
-            />
-          );
-        })}
-      </motion.div>
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={"#ffffff"}
+        refresh
+      />
 
       {/* Template badge */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="relative mb-8"
+        className="relative mb-8 "
       >
-        <div className="bg-white/10 backdrop-blur-md border border-gray-800/80 text-gray-600 text-sm rounded-full px-2 py-1 flex items-center space-x-2">
-          <span className="text-amber-400">✨</span>
-          <span>Introducing Magic UI Template</span>
-          <ArrowRight className="w-4 h-4" />
+        <div className="z-10 flex min-h-64 items-center justify-center">
+          <div
+            className={
+              "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+            }
+          >
+            <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+              <span>✨ Introducing Magic UI</span>
+              <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+            </AnimatedShinyText>
+          </div>
         </div>
       </motion.div>
 
@@ -139,14 +114,16 @@ export function HeroSection() {
         }
       >
         {/* Gradient background for email client */}
-        <div className="absolute -z-10 inset-[50%] bg-red-500 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-yellow-500/20 to-yellow-500/20 rounded-full blur-3xl"></div>
-        </div>
 
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[250%] h-[150%] -z-10 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-radial from-yellow-700 via-transparent to-transparent w-full h-full rounded-full blur-[200px] opacity-50"></div>
+        </div>
         <div className="relative rounded-xl border border-white/10 bg-white bg-opacity-[0.01] before:absolute before:bottom-1/2 before:left-0 before:top-0 before:h-full before:w-full before:opacity-0 before:[filter:blur(180px)] before:[background-image:linear-gradient(to_bottom,var(--color-one),var(--color-one),transparent_40%)] before:animate-image-glow after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_30%,transparent)]">
           <EmailClient />
         </div>
       </motion.div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-[0] h-1/5 bg-gradient-to-t from-black"></div>
     </section>
   );
 }

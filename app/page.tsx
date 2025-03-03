@@ -27,6 +27,7 @@ import { Navbar } from "@/components/navbar";
 import { PricingSection } from "@/components/pricing-section";
 import { IconGrid } from "@/components/icon-grid";
 import { Footer } from "@/components/footer";
+import TrustedBySection from "@/components/TrustedBySection";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -50,7 +51,8 @@ export default function Home() {
       >
         <HeroSection />
       </motion.div>
-
+      {/* New TrustedBySection added here */}
+      <TrustedBySection />
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

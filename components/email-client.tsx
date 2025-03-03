@@ -33,7 +33,7 @@ export function EmailClient() {
   };
 
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto ">
       <motion.div
         className="rounded-xl overflow-hidden border border-white/10 bg-black/50 backdrop-blur-md shadow-2xl"
         initial={{ opacity: 0, y: 50 }}
@@ -268,7 +268,7 @@ export function EmailClient() {
             </div>
           </div>
         </div>
-        <BorderBeam duration={8} size={100} />
+        <BorderBeam duration={10} size={150} />
       </motion.div>
     </section>
   );
