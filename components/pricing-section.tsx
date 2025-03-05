@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Switch } from '@/components/ui/switch'
-import { Check, Sparkles } from 'lucide-react'
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
+import { Check, Sparkles } from "lucide-react";
 
 export function PricingSection() {
-  const [isAnnual, setIsAnnual] = useState(false)
-  
+  const [isAnnual, setIsAnnual] = useState(false);
+
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  }
+    show: { opacity: 1, y: 0 },
+  };
 
   return (
     <section className="container mx-auto px-4 py-16">
@@ -35,30 +35,36 @@ export function PricingSection() {
         className="text-center mb-12"
       >
         <h2 className="text-lg font-medium text-gray-400 mb-2">Pricing</h2>
-        <h1 className="text-5xl font-bold mb-6">Simple pricing for everyone.</h1>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          Choose an affordable plan that's packed with the best features for engaging your audience, creating customer loyalty, and driving sales.
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+          Simple pricing for everyone.
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+          Choose an affordable plan that's packed with the best features for
+          engaging your audience, creating customer loyalty, and driving sales.
         </p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: true }}
-        className="flex items-center justify-center mb-12"
+        className="flex flex-col sm:flex-row items-center justify-center mb-12 space-y-4 sm:space-y-0 sm:space-x-4"
       >
         <div className="flex items-center space-x-2">
-          <span className={isAnnual ? "text-gray-400" : "text-white"}>Annual</span>
-          <Switch 
-            checked={!isAnnual} 
-            onCheckedChange={() => setIsAnnual(!isAnnual)} 
+          <span className={isAnnual ? "text-gray-400" : "text-white"}>
+            Annual
+          </span>
+          <Switch
+            checked={!isAnnual}
+            onCheckedChange={() => setIsAnnual(!isAnnual)}
           />
-          <span className={!isAnnual ? "text-gray-400" : "text-white"}>Monthly</span>
+          <span className={!isAnnual ? "text-gray-400" : "text-white"}>
+            Monthly
+          </span>
         </div>
-        <div className="ml-4 bg-amber-400/10 text-amber-400 text-sm px-3 py-1 rounded-full flex items-center">
-          <Sparkles className="w-4 h-4 mr-1" />
-          2 MONTHS FREE
+        <div className="bg-amber-400/10 text-amber-400 text-sm px-3 py-1 rounded-full flex items-center">
+          <Sparkles className="w-4 h-4 mr-1" />2 MONTHS FREE
         </div>
       </motion.div>
 
@@ -67,20 +73,24 @@ export function PricingSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
         {/* Basic Plan */}
         <motion.div variants={item}>
           <Card className="bg-black/40 border border-white/10 overflow-hidden h-full flex flex-col">
             <div className="p-6">
               <h3 className="text-xl font-bold mb-1">Basic</h3>
-              <p className="text-sm text-gray-400 mb-4">A basic plan for startups and individual users</p>
+              <p className="text-sm text-gray-400 mb-4">
+                A basic plan for startups and individual users
+              </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold">${isAnnual ? '8' : '10'}</span>
+                <span className="text-4xl font-bold">
+                  ${isAnnual ? "8" : "10"}
+                </span>
                 <span className="text-gray-400">/ month</span>
               </div>
               <Button className="w-full mb-6">Subscribe</Button>
-              
+
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <Check className="w-5 h-5 text-green-500 mr-2" />
@@ -111,13 +121,19 @@ export function PricingSection() {
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold mb-1">Premium</h3>
-              <p className="text-sm text-gray-400 mb-4">A premium plan for growing businesses</p>
+              <p className="text-sm text-gray-400 mb-4">
+                A premium plan for growing businesses
+              </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold">${isAnnual ? '16' : '20'}</span>
+                <span className="text-4xl font-bold">
+                  ${isAnnual ? "16" : "20"}
+                </span>
                 <span className="text-gray-400">/ month</span>
               </div>
-              <Button className="w-full mb-6 bg-amber-500 hover:bg-amber-600 text-black">Subscribe</Button>
-              
+              <Button className="w-full mb-6 bg-amber-500 hover:bg-amber-600 text-black">
+                Subscribe
+              </Button>
+
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <Check className="w-5 h-5 text-green-500 mr-2" />
@@ -149,13 +165,18 @@ export function PricingSection() {
           <Card className="bg-black/40 border border-white/10 overflow-hidden h-full flex flex-col">
             <div className="p-6">
               <h3 className="text-xl font-bold mb-1">Enterprise</h3>
-              <p className="text-sm text-gray-400 mb-4">An enterprise plan with advanced features for large organizations</p>
+              <p className="text-sm text-gray-400 mb-4">
+                An enterprise plan with advanced features for large
+                organizations
+              </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold">${isAnnual ? '40' : '50'}</span>
+                <span className="text-4xl font-bold">
+                  ${isAnnual ? "40" : "50"}
+                </span>
                 <span className="text-gray-400">/ month</span>
               </div>
               <Button className="w-full mb-6">Subscribe</Button>
-              
+
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <Check className="w-5 h-5 text-green-500 mr-2" />
@@ -191,13 +212,17 @@ export function PricingSection() {
           <Card className="bg-black/40 border border-white/10 overflow-hidden h-full flex flex-col">
             <div className="p-6">
               <h3 className="text-xl font-bold mb-1">Ultimate</h3>
-              <p className="text-sm text-gray-400 mb-4">The ultimate plan with all features for industry leaders</p>
+              <p className="text-sm text-gray-400 mb-4">
+                The ultimate plan with all features for industry leaders
+              </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold">${isAnnual ? '64' : '80'}</span>
+                <span className="text-4xl font-bold">
+                  ${isAnnual ? "64" : "80"}
+                </span>
                 <span className="text-gray-400">/ month</span>
               </div>
               <Button className="w-full mb-6">Subscribe</Button>
-              
+
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <Check className="w-5 h-5 text-green-500 mr-2" />
@@ -229,5 +254,5 @@ export function PricingSection() {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

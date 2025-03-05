@@ -31,48 +31,23 @@ export function IconGrid() {
         className="absolute bottom-1/4 right-0 overflow-hidden w-full bg-transparent"
         style={{ height: "100%" }}
       >
-        <Marquee reverse className="[--duration:5s]">
-          {iconRows.map((Icon, index) => (
-            <IconWrapper
-              key={index}
-              Icon={Icon}
-              colorIndex={index % colors.length}
-            />
-          ))}
-        </Marquee>
-        <Marquee reverse className="[--duration:20s]">
-          {iconRows.map((Icon, index) => (
-            <IconWrapper
-              key={index}
-              Icon={Icon}
-              colorIndex={index % colors.length}
-            />
-          ))}
-        </Marquee>
-        <Marquee reverse className="[--duration:15s]">
-          {iconRows.map((Icon, index) => (
-            <IconWrapper
-              key={index}
-              Icon={Icon}
-              colorIndex={index % colors.length}
-            />
-          ))}
-        </Marquee>
-        <Marquee reverse className="[--duration:25s]">
-          {iconRows.map((Icon, index) => (
-            <IconWrapper
-              key={index}
-              Icon={Icon}
-              colorIndex={index % colors.length}
-            />
-          ))}
-        </Marquee>
+        {[5, 10, 15, 20].map((duration, i) => (
+          <Marquee key={i} reverse className={`[--duration:${duration}s]`}>
+            {iconRows.map((Icon, index) => (
+              <IconWrapper
+                key={index}
+                Icon={Icon}
+                colorIndex={index % colors.length}
+              />
+            ))}
+          </Marquee>
+        ))}
         <div className="pointer-events-none absolute inset-x-0 bottom-[16%] h-1/3 bg-gradient-to-t from-black"></div>
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 py-16 pt-28 relative">
-        <div className="flex flex-col items-center text-center mb-16 rounded-full bg-black/20 w-max mx-auto">
+        <div className="flex flex-col items-center text-center mb-16 rounded-full bg-black/20 w-full  max-w-max mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -81,12 +56,12 @@ export function IconGrid() {
             className="mb-8"
           >
             <div className="p-4 rounded-3xl border border-gray-700/50 bg-black/60 w-max mx-auto">
-              <LucideHeartHandshake className="w-16 h-16 text-white/90 mx-auto  drop-shadow" />
+              <LucideHeartHandshake className="w-12 md:w-16 h-12 md:h-16 text-white/90 mx-auto drop-shadow" />
             </div>
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent">
               Stop wasting time on design.
             </h2>
-            <p className="text-xl text-white/60">
+            <p className="text-lg md:text-xl text-white/60">
               Start your 7-day free trial. No credit card required.
             </p>
           </motion.div>
@@ -99,9 +74,9 @@ export function IconGrid() {
           >
             <Button
               size="lg"
-              className="bg-inherit border border-gray-500/50 rounded-full text-white px-8 hover:bg-gray-500/40"
+              className="bg-inherit border border-gray-500/50 rounded-full text-white px-6 md:px-8 py-2 md:py-3 text-sm md:text-base hover:bg-gray-500/40"
             >
-              Get Started <ChevronRight />
+              Get Started <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
         </div>

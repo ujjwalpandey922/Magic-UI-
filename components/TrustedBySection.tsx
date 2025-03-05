@@ -43,7 +43,7 @@ const TrustedBySection = () => {
         <div className="absolute inset-0 bg-gradient-radial from-yellow-700 via-transparent to-transparent w-full h-full rounded-full blur-[50px] opacity-80"></div>
       </div>
 
-      <div className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-full h-[120%] z-10 overflow-hidden pointer-events-none [clip-path:ellipse(50%_50%_at_50%_100%)]">
+      <div className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-full h-[60%] sm:h-[80%] md:h-[120%] z-10 overflow-hidden pointer-events-none  [clip-path:ellipse(50%_50%_at_50%_100%)]">
         <div className="absolute inset-0 bg-black w-full h-full"></div>
       </div>
     </motion.div>
